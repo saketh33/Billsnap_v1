@@ -153,7 +153,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jr1636569@gmail.com'
-EMAIL_HOST_PASSWORD = 'Ruchiramesh9@'
+EMAIL_HOST_PASSWORD = 'Ruchiramesh9@@'
 
 SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.social_details',
