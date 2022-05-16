@@ -35,4 +35,5 @@ gunicorn
 psycopg2
 whitenoise
 opencv-python
+opencv-python-headless
 
