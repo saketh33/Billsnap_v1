@@ -36,4 +36,6 @@ psycopg2
 whitenoise
 opencv-python
 opencv-python-headless
-
+Jinja2==3.0.1
+MarkupSafe==2.0.1
+streamlit
