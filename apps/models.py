@@ -1,5 +1,4 @@
 from django.db import models
-import models
 from django.dispatch import receiver
 from django.utils.text import slugify
 from django.core.validators import MaxValueValidator, MinValueValidator
