@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>show apps</h1>
+<button><a href="{% url 'customerlist'%}">view customer list directly</a></button>
+    {% for i in showapp %}
+        <h2>no apps found</h2>
+        <h2>{{i.appname}}<h2>
+        <img src="{{i.appimg.url}}" width="500px">
+        <h3>{{i.updated_at}}
+        <button><a href="{% url 'deleteapp' i.appname%}">delete</a></button>
+    {%endfor%}
+</body>
+</html>

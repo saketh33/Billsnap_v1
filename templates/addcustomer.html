@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Applist page</h1>
+{% if user.is_authenticated %}
+    <p>Hi, {{user.username}}</p>
+    <button type="button"><a href="{%url 'logout' %}">LogOut</a></button>
+{% else %}
+    <button><a href="{%url 'register'%}">Register</a></button>
+    <p>OR</p>
+    <button><a href="{%url 'login'%}">LogIn</a></button>
+{% endif %}
+
+<br></br>
+<form method="POST" action="{% url 'addcust' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    </br></br>
+    <label for="utility_name" class="form__label">utility_name</label>
+    <input type="input" class="form__field" name="utility_name" id="utility_name"required/>
+    </br></br>
+    <label for="utility_short_name" class="form__label">utility_short_name</label>
+    <input type="input" class="form__field" name="utility_short_name" id="utility_short_name" required/>
+    <br></br>
+    <label for="utility_state" class="form__label">utility_state</label>
+    <input type="input" class="form__field" name="utility_state" id="utility_state" required/>
+    <br></br>
+    <label for="utility_district" class="form__label">utility_district</label>
+    <input type="input" class="form__field" name="utility_district" id="utility_district" required/>
+    <br></br>
+    <label for="utility_country" class="form__label">utility_country</label>
+    <input type="input" class="form__field" name="utility_country" id="utility_country" required/>
+    <br></br>
+    <label for="utility_postalcode" class="form__label">utility_postalcode</label>
+    <input type="input" class="form__field" name="utility_postalcode" id="utility_postalcode" required/>
+    <br></br>
+    <label for="contact_person" class="form__label">contact_person</label>
+    <input type="input" class="form__field" name="contact_person" id="contact_person" required/>
+    <br></br>
+    <label for="contact_email" class="form__label">contact_email</label>
+    <input type="input" class="form__field" name="contact_email" id="contact_email" required/>
+    <br></br>
+    <label for="contact_phnum" class="form__label">contact_phnum</label>
+    <input type="input" class="form__field" name="contact_phnum" id="contact_phnum" required/>
+    <br></br>
+    <label for="contact_designation" class="form__label">contact_designation</label>
+    <input type="input" class="form__field" name="contact_designation" id="contact_designation" required/>
+    <br></br>
+    <label for="office_address" class="form__label">office_address</label>
+    <input type="input" class="form__field" name="office_address" id="office_address" required/>
+    <br></br>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
