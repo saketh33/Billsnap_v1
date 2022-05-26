@@ -103,7 +103,7 @@ class LoginView(View):
                             auth.login(request, user)
                             if next:
                                 return redirect(next)
-                            return redirect("index")
+                            return redirect("dash")
 
                         messages.error(
                             request, "Account is not active,please check your email"

@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import applists,customer
+import pandas
+from .models import applists,customer,csvs
 from datetime import datetime
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
+@login_required
 def addapp(request):
     applis= applists()
     if request.method=='POST':
@@ -20,15 +23,17 @@ def addapp(request):
     else:
         return render(request, 'applist.html')
 
+@login_required
 def showapps(request):
     appli=applists.objects.all()
-    return render(request,'showapps.html',{'showapp':appli})
+    leni=len(appli)
+    return render(request,'showapps.html',{'showapp':appli,'leni':leni})
 
+@login_required
 def deleteapp(request,appname):
     deli=applists.objects.get(appname=appname)
     deli.delete()
     return redirect('showapps')
-
 
 
 def addcustomer(request):
@@ -79,11 +84,6 @@ def deletecust(request,utility_name):
     deli.delete()
     return redirect('customerlist')
 
-from django.template import loader, Context
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-
 def updaterecord(request,id):
     inst=customer.objects.get(id=id)
     if request.method=='POST':
@@ -119,9 +119,41 @@ def updaterecord(request,id):
     else:
         return render(request, 'editcustomer.html',{'profile': inst})
 
+import pandas as pd
+def bulk_upload(request):
+    if request.method=='POST':
+        csvfile=request.FILES.get('csvfile')
 
-'''class CustomerUpdate(PermissionRequiredMixin, UpdateView):
-    permission_required = 'customers.can_manage_customers'
-    model = customer
-    fields = [f.name for f in customer._meta.get_fields()]
-    print(fields)'''
+        df=pd.read_csv(csvfile)
+        l=list(df.columns)
+        if l==['LatD', ' "LatM"', ' "LatS"', ' "NS"', ' "LonD"', ' "LonM"', ' "LonS"', ' "EW"', ' "City"', ' "State"']:
+            objs = [csvs(
+                LatD= row['LatD'],
+                LatM  = row[' "LatM"'],
+                LatS= row[' "LatS"'],
+                NS= row[' "NS"'],
+                LonD  = row[' "LonD"'],
+                LonM  = row[' "LonM"'],
+                LonS  = row[' "LonS"'],
+                EW  = row[' "EW"'],
+                City  = row[' "City"'],
+                State= row[' "State"']
+                )
+            for i,row in df.iterrows()]
+            csvs.objects.bulk_create(objs)
+            return redirect('uploadlist')
+        else:
+            status=0
+            return render(request, 'bulkupload.html',{'stat':status})
+    else:
+        stat=00
+        return render(request, 'bulkupload.html',{'stat':stat})
+
+def uploadlis(request):
+    cols=[f.name for f in csvs._meta.get_fields()]
+    dets=csvs.objects.all()
+    return render(request,'uploadlist.html',{'details':dets,'columns':cols})
+
+def settings(request):
+    if request.method=='POST':
+        custlis=request.POST.get('custlis')
