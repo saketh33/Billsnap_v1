@@ -1,58 +1,55 @@
+{% extends 'dashaside.html' %}
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
-</style>
+  <title>{% block title %} Customer list {% endblock title %}</title>
 </head>
 <body>
+  {% block body %}
+      <div class="col-md-7 flex-md-fill">
+        <div class="col right" id="customer-list">
+          <h2 class="ps-1 pt-3" style="color: blue">Customer List</h2>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  {% for i in columns %}
+                  <th scope="col">{{i}}</th>
+                  {% endfor %}
+                </tr>
+              </thead>
 
-<h1>customer details</h1>
-<button><a href="{% url 'addcust' %}"> Add Customer </a></button>
-</br>
-</br>
-<table>
-  <tr>
-    {% for i in columns %}
-    <th>{{i}}</th>
-    {%endfor%}
-  </tr>
-{% for i in details %}
-    <tr>
-        <td>{{ i.id }}</td>
-        <td>{{ i.utility_name }}</td>
-        <td>{{ i.utility_short_name }}</td>
-        <td>{{ i.utility_state }}</td>
-        <td>{{ i.utility_district }}</td>
-        <td>{{ i.utility_country }}</td>
-        <td>{{ i.utility_postalcode }}</td>
-        <td>{{ i.contact_person }}</td>
-        <td>{{ i.contact_email }}</td>
-        <td>{{ i.contact_phnum }}</td>
-        <td>{{ i.contact_designation }}</td>
-        <td>{{ i.office_address }}</td>
-        <td>{{ i.info_created_at }}</td>
-        <td>{{ i.info_updated_at }}</td>
-        <td><button><a href="{% url 'deletecustomer' i.utility_name %}">delete</a></button></td>
-        <td><button><a href="{% url 'updaterecord' i.id %}">edit</a></button></td>
-    </tr>
-{%endfor%}
-</table>
-
+              <tbody>
+                {% for i in details %}
+                <tr>
+                    <td>{{ i.id }}</td>
+                    <td>{{ i.utility_name }}</td>
+                    <td>{{ i.utility_short_name }}</td>
+                    <td>{{ i.utility_state }}</td>
+                    <td>{{ i.utility_district }}</td>
+                    <td>{{ i.utility_country }}</td>
+                    <td>{{ i.utility_postalcode }}</td>
+                    <td>{{ i.contact_person }}</td>
+                    <td>{{ i.contact_email }}</td>
+                    <td>{{ i.contact_phnum }}</td>
+                    <td>{{ i.contact_designation }}</td>
+                    <td>{{ i.office_address }}</td>
+                    <td>{{ i.info_created_at }}</td>
+                    <td>{{ i.info_updated_at }}</td>
+                    <td><button><a href="{% url 'deletecustomer' i.utility_name %}">delete</a></button></td>
+                    <td><button><a href="{% url 'updaterecord' i.id %}">edit</a></button></td>
+                </tr>
+                {%endfor%}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+{% endblock body %}
 </body>
+{% block script %}
+<script src="{% static 'dashboard/script.js' %}"></script>
+{% endblock script %}
 </html>
 

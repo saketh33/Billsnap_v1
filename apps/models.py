@@ -41,15 +41,24 @@ class customer(models.Model):
     utility_district= models.CharField(max_length=50, null=True, blank=True)
     utility_country= models.CharField(max_length=50, null=True, blank=True)
     utility_postalcode= models.CharField(max_length=20, null=True, blank=True)
+    utility_address=models.TextField(max_length=200, null=True, blank=True)
 
     #contact details
     contact_person= models.CharField(max_length=200, null=True, blank=True)
     contact_email = models.EmailField(max_length=50, null=True, blank=True)
     contact_phnum = models.CharField(max_length=15, null=True, blank=True)
+    contact_mobile= models.CharField(max_length=15, null=True, blank=True)
     contact_designation= models.CharField(max_length=100, null=True, blank=True)
-    office_address=models.TextField(max_length=200,null=True,blank=True)
+    contact_landline= models.CharField(max_length=20, null=True, blank=True)
 
-    #contact details
+    #emeergency contact details
+    emergency_person=models.CharField(max_length=200, null=True, blank=True)
+    emergency_altperson=models.CharField(max_length=200, null=True, blank=True)
+    emergency_mobile=models.CharField(max_length=200, null=True, blank=True)
+    emergency_altmobile=models.CharField(max_length=200, null=True, blank=True)
+    emergency_officeaddress=models.TextField(max_length=200,null=True,blank=True)
+    emergency_altofficeaddress=models.TextField(max_length=200,null=True,blank=True)
+
 
     info_created_at = models.DateTimeField(auto_now_add=True)
     info_updated_at = models.DateTimeField(auto_now=True)

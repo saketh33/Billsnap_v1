@@ -1,4 +1,172 @@
+{% extends 'dashaside.html' %}
+{% load static %}
 <!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'dashboard/dashboard.css' %}">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        {% endblock css %}
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>{% block title %}settings{% endblock title %}</title>
+       </head>
+<body>
+    {% block body %}
+    <div class="col-md-7  flex-md-fill m-3">
+      <div class="col right create-customer ps-0 pe-4 me-2" id="">
+
+        <div class="frag">
+          <div class="d-flex align-items-center utility-details mb-4">
+            <h3>Utility Details</h3>
+            <div class="d-flex ms-auto">
+              <i class="fa-solid fa-circle-chevron-down"></i>
+              <i class="fa-solid fa-circle-chevron-up d-none"></i>
+            </div>
+          </div>
+          <form class="form row">
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-8">
+              <label class="form-label required" for="utility-name">Utility Name</label>
+              <input class="form-control" id="utility-name">
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">
+              <label class="form-label required" for="short-name" >Short Name</label>
+              <input class="form-control" id="short-name">
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-12 col-lg-12">
+                  <label class="form-label required" for="state">State</label>
+                  <select class="form-select" id="state" aria-label="Default select example">
+                    <option selected>select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-sm-6 col-md-12 col-lg-12 ">
+                  <label class="form-label required" for="postal-code">Postal Code</label>
+                  <input class="form-control" id="postal-code">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-lg-4">
+              <div class="row">
+                <div class="col-sm-6 col-md-12 col-lg-12">
+                  <label class="form-label required" for="dist">District</label>
+                  <select class="form-select" id="dist" aria-label="Default select example">
+                    <option selected>select</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <div class="col-sm-6 col-md-12 col-lg-12 ">
+                  <label class="form-label required" for="country">Country</label>
+                  <input class="form-control" id="country">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <label class="form-label required" for="address">Address</label>
+              <textarea class="form-control" placeholder="" id="address"
+                style="height: 116px"></textarea>
+            </div>
+
+          </form>
+        </div>
+
+        <div class="frag">
+          <div class="d-flex align-items-center contact-details mb-4">
+            <h3>Contact Details</h3>
+            <div class="d-flex ms-auto">
+              <i class="fa-solid fa-circle-chevron-down"></i>
+              <i class="fa-solid fa-circle-chevron-up d-none"></i>
+            </div>
+          </div>
+          <form class="form row">
+
+            <div class="col-sm-6 col-md-6 col-lg-4">
+              <label class="form-label required" for="auth-person">Authorised Person</label>
+              <input class="form-control" id=" auth-person">
+            </div>
+            <div class="col-sm-6  col-md-6 col-lg-4">
+              <label for="exampleInputEmail1" class="form-label required" for=>Email</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4">
+              <label class="form-label required" for="designation">Designation</label>
+              <input class="form-control" id="designation">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4">
+              <label class="form-label required" for="mobile">Mobile</label>
+              <input class="form-control" type="" size="10" id="mobile">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-4">
+              <label class="form-label" for="landline">Landline</label>
+              <input class="form-control" type="" size="10" id="landline">
+            </div>
+          </div>
+
+        </form>
+
+        <div class="frag">
+          <div class="d-flex align-items-center emergency-contact-details mb-4">
+            <h3>Emergency Contact Details</h3>
+            <div class="d-flex ms-auto">
+              <i class="fa-solid fa-circle-chevron-down"></i>
+              <i class="fa-solid fa-circle-chevron-up d-none"></i>
+            </div>
+          </div>
+          <form class="form row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <label class="form-label required" for="contact-person">Contact Person</label>
+              <input class="form-control" id="contact-person">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <label class="form-label required" for="s-mobile">Mobile</label>
+              <input class="form-control" type="" size="10" id="s-mobile">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <label class="form-label" for="alt-contact-person">Alternate Contact Person</label>
+              <input class="form-control" id="alt-contact-person">
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <label class="form-label" for="t-mobile">Alternate Mobile</label>
+              <input class="form-control" type="" size="10" id="t-mobile">
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <label class="form-label required" for="office-address">Office Address</label>
+              <textarea class="form-control" placeholder="" id="office-address"
+                style="height: 100px"></textarea>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-6">
+              <label for="alt-office-address" class="form-label">Alternate Office Address</label>
+              <textarea class="form-control" placeholder="" id="alt-office-address"
+                style="height: 100px"></textarea>
+            </div>
+          </form>
+        </div>
+
+        <div class="frag-btns ms-4" style="margin-bottom:50px;padding-bottom: 20px;">
+          <div class="d-flex flex-row-reverse">
+            <button class="btn btn-primary save-changes px-4 mx-2">Save</button>
+            <button class="btn cancel px-4 mx-2">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+{% endblock body %}
+</body>
+</html>
+
+<!--<!DOCTYPE html>
 <html>
 <body>
 
@@ -52,4 +220,4 @@
     <button type="submit">Save</button>
 </form>
 </body>
-</html>
+</html>-->

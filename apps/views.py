@@ -46,12 +46,22 @@ def addcustomer(request):
         utility_district= request.POST.get('utility_district')
         utility_country=request.POST.get('utility_country')
         utility_postalcode= request.POST.get('utility_postalcode')
+        utility_address=request.POST.get('utility_address')
+
         #contact details
         contact_person= request.POST.get('contact_person')
         contact_email = request.POST.get('contact_email')
         contact_phnum =request.POST.get('contact_phnum')
+        contact_mobile=request.POST.get('contact_mobile')
         contact_designation= request.POST.get('contact_designation')
-        office_address=request.POST.get('office_address')
+        contact_landline=request.POST.get('contact_landline')
+
+        emergency_person=request.POST.get('emerg_person')
+        emergency_altperson=request.POST.get('emerg_altperson')
+        emergency_mobile=request.POST.get('emerg_mobile')
+        emergency_altmobile=request.POST.get('emerg_altmobile')
+        emergency_officeaddress=request.POST.get('emerg_officeaddress')
+        emergency_altofficeaddress=request.POST.get('emerg_altofficeaddress')
 
         #contact details
         addcus.utility_name =utility_name
@@ -60,11 +70,21 @@ def addcustomer(request):
         addcus.utility_district = utility_district
         addcus.utility_country = utility_country
         addcus.utility_postalcode = utility_postalcode
+        addcus.utility_address=utility_address
+
         addcus.contact_person = contact_person
         addcus.contact_email=contact_email
         addcus.contact_phnum=contact_phnum
+        addcus.contact_mobile=contact_mobile
         addcus.contact_designation=contact_designation
-        addcus.office_address=office_address
+        addcus.contact_landline=contact_landline
+
+        addcus.emergency_person=emergency_person
+        addcus.emergency_altperson=emergency_altperson
+        addcus.emergency_mobile=emergency_mobile
+        addcus.emergency_altmobile=emergency_altmobile
+        addcus.emergency_officeaddress=emergency_officeaddress
+        addcus.emergency_altofficeaddress=emergency_altofficeaddress
 
         addcus.save()
         return redirect('customerlist')
