@@ -30,11 +30,19 @@
                     <td>{{ i.utility_district }}</td>
                     <td>{{ i.utility_country }}</td>
                     <td>{{ i.utility_postalcode }}</td>
+                    <td>{{ i.utility_address }}</td>
                     <td>{{ i.contact_person }}</td>
                     <td>{{ i.contact_email }}</td>
                     <td>{{ i.contact_phnum }}</td>
+                    <td>{{ i.contact_mobile }} </td>
                     <td>{{ i.contact_designation }}</td>
-                    <td>{{ i.office_address }}</td>
+                    <td>{{ i.contact_landline }} </td>
+                    <td>{{ i.emergency_person }} </td>
+                    <td>{{ i.emergency_altperson }} </td>
+                    <td>{{ i.emergency_mobile }} </td>
+                    <td>{{ i.emergency_altmobile }} </td>
+                    <td>{{ i.emergency_officeaddress }} </td>
+                    <td>{{ i.emergency_altofficeaddress }} </td>
                     <td>{{ i.info_created_at }}</td>
                     <td>{{ i.info_updated_at }}</td>
                     <td><button><a href="{% url 'deletecustomer' i.utility_name %}">delete</a></button></td>
